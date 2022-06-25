@@ -6,14 +6,15 @@ with open(os.path.join(os.path.dirname(__file__), 'README.md')) as readme:
     README = readme.read()
 
 setuptools.setup(
-    name='Upwork Scraper',
+    name='upwork',
     version='1.0.0',
     author='Eyosiyas Bereketab',
     author_email='contact@deveyosiyas.com',
     description='Upwork talent scraper',
     long_description='A lightweight Python package to scrape upwork.com for talent profiles',
     long_description_content_type='text/markdown',
-    packages=['upwork'],
+    packages=setuptools.find_packages(),
+    setuprequires=['bs4', 'requests'],
     url='https://github.com/devEyosiyas/upwork_package',
     classifiers=[
         'Programming Language :: Python :: 3',
