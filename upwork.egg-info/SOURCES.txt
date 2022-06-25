@@ -1,9 +1,0 @@
-README.md
-license.txt
-setup.py
-upwork/__init__.py
-upwork/scraper.py
-upwork.egg-info/PKG-INFO
-upwork.egg-info/SOURCES.txt
-upwork.egg-info/dependency_links.txt
-upwork.egg-info/top_level.txt
