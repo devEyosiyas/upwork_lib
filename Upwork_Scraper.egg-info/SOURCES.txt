@@ -1,0 +1,9 @@
+README.md
+license.txt
+setup.py
+Upwork_Scraper.egg-info/PKG-INFO
+Upwork_Scraper.egg-info/SOURCES.txt
+Upwork_Scraper.egg-info/dependency_links.txt
+Upwork_Scraper.egg-info/top_level.txt
+upwork/__init__.py
+upwork/scraper.py
