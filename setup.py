@@ -14,6 +14,7 @@ setuptools.setup(
     description='Upwork talent scraper',
     long_description='A lightweight Python package to scrape upwork.com for talent profiles',
     long_description_content_type='text/markdown',
+    packages=['upwork'],
     url='https://github.com/devEyosiyas/upwork_package',
     classifiers=[
         'Programming Language :: Python :: 3',
