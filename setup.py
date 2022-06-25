@@ -7,7 +7,7 @@ with open(os.path.join(os.path.dirname(__file__), 'README.md')) as readme:
 
 setuptools.setup(
     name='upwork',
-    version='1.0.1',
+    version='1.0.20',
     author='Eyosiyas Bereketab',
     author_email='contact@deveyosiyas.com',
     description='Upwork talent scraper',
@@ -15,7 +15,7 @@ setuptools.setup(
     long_description_content_type='text/markdown',
     packages=setuptools.find_packages(),
     setuprequires=['bs4', 'requests'],
-    url='https://github.com/devEyosiyas/upwork_package',
+    url='https://github.com/devEyosiyas/upwork_lib',
     classifiers=[
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: MIT License',

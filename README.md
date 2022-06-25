@@ -7,7 +7,7 @@ Upwork Scraper is a Python library for scraping upwork talent profiles.
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install upwork scraper.
 
 ```bash
-pip install Upwork-Scraper
+pip install upwork
 ```
 ## Get Cookie
 In order to use this library you need a cookie and user agent, pretty easy to get.
