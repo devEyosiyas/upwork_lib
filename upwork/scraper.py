@@ -10,30 +10,23 @@ class Scraper:
     """ The following methods are for the upwork talent profile scraper """
     base_url = 'https://www.upwork.com'
     profile_url = '{0}/search/profiles/'.format(base_url)
-    default_accept = 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,' \
-                     '*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
-
-    def __init__(self, user_agent='', cookie='', accept=default_accept, file=None):
-        """ Initialize the scraper """
-        if file is not None:
-            self.data = file
-            self.cookie = file[0].strip()
-            self.user_agent = file[1].strip()
-            self.accept = file[2].strip()
-        else:
-            self.user_agent = user_agent.strip()
-            self.cookie = cookie.strip()
-            self.accept = accept.strip()
 
     def get_html(self, url):
         """ Returns the html of the url """
-        import requests
-        headers = {
-            'User-Agent': self.user_agent,
-            'Accept': self.accept,
-            'cookie': self.cookie
-        }
-        return requests.get(url, headers=headers).text
+        from selenium import webdriver
+        from selenium.webdriver.chrome.options import Options
+        from user_agent import generate_user_agent
+
+        options = Options()
+        options.add_argument(f'user-agent={generate_user_agent(device_type="desktop", os=("mac", "linux", "win"))}')
+        options.add_argument("--headless")
+        options.add_argument("--window-minimize")
+        options.add_argument("--disable-gpu")
+        options.add_argument("--disable-extensions")
+        options.add_argument("--no-sandbox")
+        driver = webdriver.Chrome(options=options)
+        driver.get(url)
+        return driver.page_source
 
     def scrape_upwork_profile(self, page=0, name=''):
         """
@@ -62,9 +55,9 @@ class Scraper:
             name = profile.find('div', class_='identity-name')
             if name is not None:
                 talent.name = name.text.strip()
-            image = profile.find('img')['src']
-            if image is not None:
-                talent.image = image
+            image = profile.find('img')
+            if image is not None and image.has_attr('src'):
+                talent.image = image['src']
             link = profile.find('div', class_='d-flex justify-space-between align-items-start')
             if link is not None:
                 talent.link = '{0}/freelancers/{1}'.format(self.base_url, link.decode_contents().split(
